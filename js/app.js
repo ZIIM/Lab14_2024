@@ -16,19 +16,27 @@ AppState.prototype.instantiateProducts = function () {
     }
   }
 
-}
+};
 
 AppState.prototype.saveToLocalStorage = function () {
   // TODO: Fill in this instance method to save product data to local storage
-}
+  localStorage.setItem('products',JSON.stringify(this.allProducts));
+  // console.log(localStorage);
+};
 
 AppState.prototype.loadItems = function () {
 
   // TODO: Update this instance method to retrieve data from local storage instead of creating new Products on each page load
+  const storedProducts = localStorage.getItem('products');
 
-  this.instantiateProducts();
-
-}
+  if (storedProducts){
+    // if stored data parse it and assign it to allProducts
+    this.allProducts = JSON.parse(storedProducts);
+  }else{
+    // if there is no stored data ins. products
+    this.instantiateProducts();
+  }
+};
 
 
 function Product(name, fileExtension = 'jpg') {
