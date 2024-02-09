@@ -2,6 +2,7 @@
 
 function AppState() {
   this.allProducts = [];
+
 }
 
 AppState.prototype.instantiateProducts = function () {
@@ -36,6 +37,8 @@ AppState.prototype.loadItems = function () {
     // if there is no stored data ins. products
     this.instantiateProducts();
   }
+  /// shows in console
+  console.log(this.allProducts)
 };
 
 
